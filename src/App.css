@@ -1,0 +1,32 @@
+.player-left {
+  background-color: #e63946;
+  color: white;
+  opacity: 0.95;
+}
+
+.player-right {
+  background-color: #457b9d;
+  color: white;
+  opacity: 0.95;
+}
+
+.header-background {
+  background-image: url("../static/images/top.png");
+  background-size: cover;
+  background-position: center;
+  height: 120px;
+}
+
+.calculator-board {
+  height: calc(100vh - 120px);
+}
+
+.row {
+  height: calc(100vh - 120px);
+}
+
+.reset-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
