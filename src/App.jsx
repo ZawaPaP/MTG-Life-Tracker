@@ -3,13 +3,16 @@ import "./App.css";
 import CommanderGame from "./components/CommanderMode/CommanderGame";
 import Copyright from "./components/Copyright";
 import Header from "./components/Header/Header";
+import OrientationWarning from "./components/OrientationWarning";
 import Reset from "./components/Reset";
 import StandardGame from "./components/StandardGame";
 import { useGame } from "./GameContext";
+import useOrientation from "./useOrientation";
 import { handleReset } from "./utils";
 
 const Game = () => {
   const { gameMode, players, setPlayers, isLoaded } = useGame();
+  const isPortrait = useOrientation();
 
   const handleClickReset = () => {
     handleReset(players, setPlayers, gameMode);
@@ -28,6 +31,7 @@ const Game = () => {
 
   return (
     <>
+      {isPortrait && <OrientationWarning />}
       {isLoaded ? (
         <div className={`Game ${getBackground(gameMode)}`}>
           <Header />
