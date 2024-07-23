@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import ControlButton from "./ControlButton";
 import LifePoints from "./LifePoints";
 import "./PlayerBoard.css";
+import PlayerName from "./PlayerName";
 
-export default function PlayerBoard({
-  onLifePointsChange,
-  player,
-  lifePoints,
-}) {
+const PlayerBoard = ({ onLifePointsChange, player, playerId, lifePoints }) => {
   const [effect, setEffect] = useState("");
 
   const handleDecrementClick = () => {
@@ -24,10 +21,14 @@ export default function PlayerBoard({
   };
 
   return (
-    <div className={`${effect}`} onAnimationEnd={onAnimationEnd}>
-      <div className="display-7 mt-2">{player}</div>
+    <div
+      className={`${effect}`}
+      onAnimationEnd={onAnimationEnd}
+      style={{ maxHeight: "100%" }}
+    >
+      <PlayerName playerId={playerId} />
 
-      <div className="d-flex justify-content-center align-items-start mt-2">
+      <div className="d-flex justify-content-center align-items-start">
         <div className="d-flex justify-content-between align-items-center w-90">
           {/* マイナスボタン */}
           <ControlButton
@@ -47,4 +48,6 @@ export default function PlayerBoard({
       </div>
     </div>
   );
-}
+};
+
+export default PlayerBoard;

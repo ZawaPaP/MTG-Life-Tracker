@@ -1,32 +1,25 @@
 .player-left {
-  background-color: #e63946;
   color: white;
-  opacity: 0.95;
 }
 
 .player-right {
-  background-color: #457b9d;
   color: white;
-  opacity: 0.95;
 }
 
-.header-background {
-  background-image: url("../static/images/top.png");
-  background-size: cover;
-  background-position: center;
-  height: 120px;
+.background {
+  background-image: url("./images/background.png");
+  background-size: 100% auto;
+  background-position: top;
 }
 
-.calculator-board {
-  height: calc(100vh - 120px);
-}
-
-.row {
-  height: calc(100vh - 120px);
-}
-
-.reset-button {
-  position: absolute;
-  right: 0;
+.footer {
+  display: flex;
+  height: 8vh;
+  background-color: rgb(142, 101, 6, 0.9);
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
   bottom: 0;
+  z-index: 1;
 }

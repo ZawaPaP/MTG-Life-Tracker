@@ -1,0 +1,7 @@
+.calculator-board {
+  height: calc(92vh - 100px);
+}
+
+.row {
+  height: calc(100vh - 100px);
+}

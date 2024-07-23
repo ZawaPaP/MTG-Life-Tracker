@@ -1,9 +1,18 @@
 import React from "react";
-import "./Reset.css";
 
 const Reset = ({ onClickReset }) => {
   return (
-    <div className="reset" onClick={onClickReset}>
+    <div
+      className="reset"
+      onClick={onClickReset}
+      style={{
+        display: "flex",
+        marginRight: "5px",
+        textDecoration: "underline",
+        color: "white",
+        fontSize: "1rem",
+      }}
+    >
       Reset
     </div>
   );

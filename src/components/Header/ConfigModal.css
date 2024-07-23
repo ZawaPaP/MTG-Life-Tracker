@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap");
+
+.custom-modal {
+  width: 55vw;
+  margin: 10% auto;
+  font-family: "MedievalSharp", sans-serif;
+}
+
+.custom-modal .modal-content {
+  background-color: transparent; /* Modalの背景を透明に */
+  border: none;
+}
+
+.custom-modal .modal-header,
+.custom-modal .modal-body {
+  background-color: rgba(255, 255, 255, 0.01);
+  border-color: goldenrod;
+  font-size: 3vw;
+}

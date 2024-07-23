@@ -1,53 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
-import Menu from "./components/Menu";
-import PlayerBoard from "./components/PlayerBoard";
+import CommanderGame from "./components/CommanderMode/CommanderGame";
+import Copyright from "./components/Copyright";
+import Header from "./components/Header/Header";
 import Reset from "./components/Reset";
+import StandardGame from "./components/StandardGame";
+import { useGame } from "./GameContext";
+import { handleReset } from "./utils";
 
-export default function Game() {
-  const [player1LifePoints, setPlayer1LifePoints] = useState(20);
-  const [player2LifePoints, setPlayer2LifePoints] = useState(20);
+const Game = () => {
+  const { gameMode, players, setPlayers, isLoaded } = useGame();
 
-  const player1HandleLifePointsChange = (value) => {
-    setPlayer1LifePoints(player1LifePoints + value);
+  const handleClickReset = () => {
+    handleReset(players, setPlayers, gameMode);
   };
-  const player2HandleLifePointsChange = (value) => {
-    setPlayer2LifePoints(player2LifePoints + value);
-  };
 
-  const handleReset = () => {
-    setPlayer1LifePoints(20);
-    setPlayer2LifePoints(20);
+  const getBackground = (gameMode) => {
+    switch (gameMode) {
+      case "Standard":
+        return "background";
+      case "Commander":
+        return "background-commander";
+      default:
+        return "";
+    }
   };
 
   return (
     <>
-      <div className="header-background d-flex justify-content-end align-items-start">
-        <Menu />
-      </div>
-      <div className="d-flex calculator-board">
-        <div class="container-fluid text-center">
-          <div className="row">
-            <div className="col player-left">
-              <PlayerBoard
-                player="Player 1"
-                lifePoints={player1LifePoints}
-                onLifePointsChange={player1HandleLifePointsChange}
-              />
-            </div>
-            <div className="col player-right">
-              <PlayerBoard
-                player="Player 2"
-                lifePoints={player2LifePoints}
-                onLifePointsChange={player2HandleLifePointsChange}
-              />
-            </div>
-          </div>
+      {isLoaded ? (
+        <div className={`Game ${getBackground(gameMode)}`}>
+          <Header />
+          {gameMode === "Standard" ? (
+            <StandardGame />
+          ) : gameMode === "Commander" ? (
+            <CommanderGame players={players} />
+          ) : null}
         </div>
-        <div className="reset-button justify-content-end align-item-end">
-          <Reset onClickReset={handleReset} />
-        </div>
+      ) : (
+        <div className="loading text-center vertical-middle">Loading...</div>
+      )}{" "}
+      <div className="footer">
+        <Copyright />
+        <Reset onClickReset={handleClickReset} />
       </div>
     </>
   );
-}
+};
+
+export default Game;
