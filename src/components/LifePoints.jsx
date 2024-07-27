@@ -14,7 +14,7 @@ const LifePointsDisplay = ({ lifePoints }) => {
       alignItems: "center",
     },
     commander: {
-      fontSize: "4.5rem",
+      fontSize: "4rem",
       fontWeight: "bold",
       textShadow: "2px 2px 2px goldenrod",
       display: "flex",
